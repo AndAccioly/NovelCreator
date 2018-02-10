@@ -1,0 +1,7 @@
+{Titulo|Primeira parte}
+{Background|[Fundo Teste|bg_teste2.png]}
+{Atores|[Joao|char_teste.png][Maria|char_teste.png]}
+{Dialogo|[Joao|Ola, como voce esta?
+Hein?]}
+{Dialogo|[Joao|Ah, voce parece bem!]}
+{Dialogo|[Maria|Realmente!]}
