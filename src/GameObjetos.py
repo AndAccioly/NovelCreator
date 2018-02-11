@@ -42,3 +42,8 @@ class Sprite():
 
 	def render(self, screen):
 		screen.blit(self.image, self.rect)
+
+class Dialogo():
+	def __init__(self, texto, container):
+		self.texto = texto
+		self.container = container

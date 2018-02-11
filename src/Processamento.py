@@ -10,10 +10,11 @@ class Processamento():
 		dir = 'scripts'
 		for filename in os.listdir(dir):
 			filename = "scripts/" + filename
-			print(filename)
 			lista = lista + [filename]
 		return lista
 		
+
+
 	def processa_dir_sprites():
 		tupla_lista = []
 		dir = 'sprites'
@@ -23,6 +24,8 @@ class Processamento():
 			tupla_lista = tupla_lista + [(filename, sprite)]
 
 		return tupla_lista
+
+
 
 	def proxima_cena(lista_cenas):
 		lista_partes = []
@@ -65,13 +68,14 @@ class Processamento():
 
 			contador_expressao = contador_expressao + 1
 
-
+		cena = Cena(titulo, bg, atores, ordem_dialogos)
 		#print(">>>>>", titulo)
 		#print(">>>>>", bg)
 		#print(">>>>>", atores)
 		#print(">>>>>", ordem_dialogos)
-		cena = Cena(titulo, bg, atores, ordem_dialogos)
 		return cena
+
+
 
 	def processa_bg(parte):
 		bg = []
@@ -91,7 +95,10 @@ class Processamento():
 				bg_caminho = bg_caminho.replace("[","").replace("|","").replace("]","")
 				bg.append((bg_nome.strip(), sprites + bg_caminho.strip()))
 				break
+
 		return bg
+
+
 
 	def processa_atores(parte):
 		atores = []
@@ -103,7 +110,6 @@ class Processamento():
 				ator_nome = ator_nome + c
 			else:
 				ator_caminho = ator_caminho + c
-
 			if c == '|':
 				caminho_ou_nome = "caminho"
 			elif c == ']':
@@ -113,7 +119,10 @@ class Processamento():
 				atores.append((ator_nome.strip(), sprites + ator_caminho.strip()))
 				ator_nome = ""
 				ator_caminho = ""
+
 		return atores
+
+
 
 	def processa_dialogos(parte):
 		dialogos = []
