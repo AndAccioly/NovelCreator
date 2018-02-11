@@ -3,7 +3,7 @@ from src.Processamento import Processamento
 from src.GameObjetos import Sprite, Cena
 from src.GerenciadorInput import GerenciadorInput
 
-pygame.init()
+pygame.init() #Lista de tuplas do tipo (String, Sprite)
 
 game_objetos = []
 	#Lista de cenas
@@ -28,10 +28,6 @@ class GameLoop():
 		self.lista_cenas = Processamento.processa_dir_scripts()
 		self.lista_sprites = Processamento.processa_dir_sprites()
 
-		self.bg = Sprite(background_teste, [0,0])
-		self.screen.blit(self.bg.image, self.bg.rect)
-		self.adicionar_objeto(self.bg)
-
 		print("Iniciando main loop")
 		mainLoop = True
 		while mainLoop:
@@ -47,19 +43,31 @@ class GameLoop():
 	def render(self):
 		#self.bg.render(self.screen)
 		for objeto in game_objetos:
-			objeto.render(self.screen)
+			objeto[1].render(self.screen)
 		pygame.display.flip()
 
 	def update(self):
+		#troca a cena atual se tiver terminado a cena anterior OU se nao tiver nenhuma cena carregada
 		if self.trocaCena == True or self.cenaAtual == None:
-			self.cenaAtual = Processamento.proxima_cena(self.lista_cenas, self.lista_sprites)
+			self.cenaAtual = Processamento.proxima_cena(self.lista_cenas)
 			self.trocaCena = False
+			self.bg = Sprite(self.cenaAtual.getBg()[0][1], [0,0])
+			self.screen.blit(self.bg.image, self.bg.rect)
+			self.remover_item_lista_objetos("Background")
+			self.adicionar_objeto("Background", self.bg)
 
 		self.gerenciadorInput.update()
+
 		for objeto in game_objetos:
-			objeto.update()
+			objeto[1].update()
 		
-	def adicionar_objeto(self, objeto):
-		game_objetos.append(objeto)
+	def adicionar_objeto(self, tipo, objeto):
+		game_objetos.append((tipo, objeto))
+
+	def remover_item_lista_objetos(self, tipo):
+		for elem in game_objetos:
+			if tipo in elem[0]:
+				game_objetos.remove(elem)
+
 
 		

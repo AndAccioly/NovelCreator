@@ -5,13 +5,23 @@ pygame.init()
 class Cena():
 	#background
 	#dialogo associado a sprite = tupla
-	def __init__(self, bg, atores, ordem_dialogos):
+	def __init__(self, titulo, bg, atores, ordem_dialogos):
 		self.bg = bg
 		self.atores = atores
 		self.ordem_dialogos = ordem_dialogos
-	def a():
-		print("a")
-	
+		self.titulo = titulo
+
+	def getTitulo(self):
+		return self.titulo	
+
+	def getBg(self):
+		return self.bg
+
+	def getAtores(self):
+		return self.atores
+
+	def getDialogos(self):
+		return self.ordem_dialogos
 
 class Sprite():
 	#sprites
