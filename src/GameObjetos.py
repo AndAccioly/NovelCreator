@@ -5,23 +5,15 @@ pygame.init()
 class Cena():
 	#background
 	#dialogo associado a sprite = tupla
-	def __init__(self, titulo, bg, atores, ordem_dialogos):
+	def __init__(self, bg = None, atores = None, ordem_dialogos = None):
 		self.bg = bg
 		self.atores = atores
 		self.ordem_dialogos = ordem_dialogos
-		self.titulo = titulo
-
-	def getTitulo(self):
-		return self.titulo	
-
 	def getBg(self):
 		return self.bg
-
 	def getAtores(self):
 		return self.atores
-
-	def getDialogos(self):
-		return self.ordem_dialogos
+	
 
 class Sprite():
 	#sprites
@@ -41,9 +33,14 @@ class Sprite():
 		self.rect.x, self.rect.y = self.posX, self.posY
 
 	def render(self, screen):
-		screen.blit(self.image, self.rect)
+		screen.blit(self.image, [self.posX, self.posY])
 
-class Dialogo():
-	def __init__(self, texto, container):
+class Texto():
+	def __init__(self, texto = "Falta texto"):
 		self.texto = texto
-		self.container = container
+
+	def getTexto(self):
+		return self.texto
+
+	def setTexto(self, texto):
+		self.texto = texto
