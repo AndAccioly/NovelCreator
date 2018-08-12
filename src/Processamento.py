@@ -4,6 +4,7 @@ from src.GameObjetos import Sprite, Cena
 erro_formatacao =  "Erro: expressao número {} incorreta. Use Dialogo, Background ou Atores."
 
 class Processamento():
+	#Faz a leitura de todos os arquivos da pasta script
 	def processa_dir_scripts():
 		lista = []
 		dir = 'scripts'
@@ -13,6 +14,7 @@ class Processamento():
 			lista = lista + [filename]
 		return lista
 		
+	#Faz a leitura de todas as sprites da pasta Sprites. A ideia seria associar o nome da Sprite ao caminho dela. Isso será usado mais pra frente
 	def processa_dir_sprites():
 		tupla_lista = []
 		dir = 'sprites'
@@ -23,14 +25,14 @@ class Processamento():
 
 		return tupla_lista
 
-	def proxima_cena(lista_cenas):
+	def proxima_cena(cena):
 		bg = None
 		atores = []
 		lista_partes = []
+		dialogos = []
 		parte = ""
 		contador_expressao = 1
-		arq = lista_cenas[0]
-		#print(arq)
+		arq = cena
 		cenaArq = open(arq)
 		with cenaArq as f:
 			lista_linha = list(f)
@@ -59,20 +61,18 @@ class Processamento():
 				tam = len(conteudo)
 				for i in range (1, tam):
 					if i%2 == 0:
-						atores.append(Sprite(conteudo[i], [200*i,100*i]))
+						atores.append((conteudo[i-1], Sprite(conteudo[i], [75*i*i,300])))
 
 			elif "Dialogo" in parte:
 				print("DIALOGO: ", parte)
+				conteudo = parte.replace("]", "").replace("[", "").split("|")
+				print(conteudo)
+				dialogos.append((conteudo[1], conteudo[2]))
 
 			else:
 				print(erro_formatacao.format(contador_expressao))
 
 			contador_expressao = contador_expressao + 1
 
-		ordem_dialogos = ""
-		cena = Cena(bg, atores, ordem_dialogos)
+		cena = Cena(bg, atores, dialogos)
 		return cena
-
-
-
-	

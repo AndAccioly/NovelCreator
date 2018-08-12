@@ -1,7 +1,7 @@
 {Titulo|Primeira parte}
-{Background|[Fundo Teste|sprites/bg_teste2.jpg]}
-{Atores|[Joao|sprites/char_teste2.png|Maria|sprites/char_teste.png]}
-{Dialogo|[Joao|Ola, como voce esta?
-Hein?]}
-{Dialogo|[Joao|Ah, voce parece bem!]}
-{Dialogo|[Maria|Realmente!]}
+{Background|[Fundo Teste|sprites/faculdade.jpg]}
+{Atores|[Michael|sprites/teste_michael_red.png|Mia|sprites/teste_mia_red.png]}
+{Dialogo|[Michael|Ola, como voce esta?Hein?]}
+{Dialogo|[Michael|Voce parece bem!]}
+{Dialogo|[Mia|*Humpf!*]}
+{Dialogo|[Mia|Sai fora.]}

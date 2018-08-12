@@ -2,8 +2,8 @@ import sys
 import pygame
 from src.GameLoop import GameLoop
 
-telaLargura = 1280
-telaAltura = 720
+telaLargura = 1920
+telaAltura = 1080
 
 def main():
 	pygame.display.init()
@@ -11,7 +11,7 @@ def main():
 	pygame.display.set_caption('Novel Creator')
 
 	gl = GameLoop(gameDisplay)
-	gl.run()
+	gl.run(telaLargura, telaAltura)
 	
 if __name__=="__main__":
 	main()
